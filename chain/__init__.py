@@ -7,6 +7,6 @@ from .celery import app as celery_app
 # import pymysql
 # pymysql.install_as_MySQLdb()
 
-import MySQLdb
+# import MySQLdb
 
 __all__ = ['celery_app']

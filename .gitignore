@@ -1,6 +1,8 @@
 db.sqlite3
 .idea
 migrations
+venv
+.vagrant
 
 # Windows:
 Thumbs.db

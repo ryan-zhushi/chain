@@ -70,12 +70,14 @@ class AssetListAll(LoginRequiredMixin, ListView):
         """
         name = Names.objects.get(username=self.request.user)
         self.queryset = super().get_queryset()
+        excluded_assets = []
         for i in self.queryset:
             projects = AssetInfo.objects.get(hostname=i).project
             project_obj = AssetProject.objects.get(projects=projects)
             hasperm = name.has_perm('read_assetproject', project_obj)
             if not hasperm:
-                self.queryset.delete(i)
+                excluded_assets.append(i)
+        self.queryset = self.queryset.exclude(hostname__in=excluded_assets)
         if self.request.GET.get('name'):
             query = self.request.GET.get('name', None)
             self.queryset = self.queryset.filter(
