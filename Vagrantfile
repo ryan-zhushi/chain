@@ -13,6 +13,7 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "chain"
   config.vm.network "private_network", ip: "172.17.8.103"
   config.vm.network "forwarded_port", guest: 8000, host: 8000
+  config.vm.network "forwarded_port", guest: 8002, host: 8002
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "4096"
     vb.cpus = 2
@@ -32,6 +33,7 @@ sudo curl -o /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.re
 sudo yum makecache
 
 ## 安装依赖包
-sudo yum install -y python36 python36-devel python36-pip
+sudo yum install -y python36 python36-devel python36-pip \
+     sshpass redis
   SHELL
 end

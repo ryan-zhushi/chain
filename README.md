@@ -98,8 +98,8 @@ mkdir /etc/ansible/
 cd chain/
 
 
-yum  install   sshpass  bzip2  redis  wget  -y
-systemctl start redis
+sudo yum install sshpass bzip2 redis wget -y
+sudo systemctl start redis
 
 cd /tmp/
 wget https://files.pythonhosted.org/packages/12/2a/e9e4fb2e6b2f7a75577e0614926819a472934b0b85f205ba5d5d2add54d0/Twisted-18.4.0.tar.bz2
